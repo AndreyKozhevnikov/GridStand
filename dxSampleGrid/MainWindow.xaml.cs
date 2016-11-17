@@ -181,6 +181,10 @@ namespace dxSampleGrid {
             var tv = MyGridControl1.tableView1;
             tv.AutoWidth = !tv.AutoWidth;
         }
+
+        private void CardView_Click(object sender, RoutedEventArgs e) {
+            MyGridControl1.gridControl1.View = new CardView();
+        }
     }
 
 

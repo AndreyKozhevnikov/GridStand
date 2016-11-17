@@ -147,6 +147,7 @@
                 <RadioButton x:Name="NoneEditForm" Content="None" Click="NoneEditForm_Click"  GroupName="g3"/>
             </StackPanel>
             <Button Content="AutoWidth" x:Name="AutoWidth" Click="AutoWidth_Click"/>
+            <Button Content="CardView" x:Name="CardView" Click="CardView_Click"/>
         </StackPanel>
     </Grid>
 
