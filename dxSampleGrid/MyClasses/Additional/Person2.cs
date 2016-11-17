@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors.DXErrorProvider;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace dxSampleGrid {
      [DebuggerDisplay("Id = {Id}, Name = {FirstName}, Value = {Age}")]
-    public partial class Person : INotifyPropertyChanged {
+    public partial class Person : INotifyPropertyChanged, IDXDataErrorInfo {
         public void CreateAdditionalResources(int i) {
           
             Group = i % 2 == 0;
@@ -36,6 +37,20 @@ namespace dxSampleGrid {
         private void RaisePropertyChanged(String propertyName) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public void GetPropertyError(string propertyName, ErrorInfo info) {
+           if (propertyName=="Age" && Age == 20) {
+                info.ErrorText = "wrong age";
+                info.ErrorType = ErrorType.Critical;
+            }
+        }
+
+        public void GetError(ErrorInfo info) {
+           if (Id == 5) {
+                info.ErrorText = "wrong person";
+                info.ErrorType = ErrorType.Information;
             }
         }
     }
