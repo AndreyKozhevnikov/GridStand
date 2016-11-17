@@ -35,11 +35,11 @@ namespace dxSampleGrid {
         }
 
         private void SearchPanelAllowFilter_Click(object sender, RoutedEventArgs e) {
-            tableView1.SearchPanelAllowFilter = !tableView1.SearchPanelAllowFilter;
+           MyGridControl1.tableView1.SearchPanelAllowFilter = !MyGridControl1.tableView1.SearchPanelAllowFilter;
         }
 
         private void AllowPartialGrouping_Click(object sender, RoutedEventArgs e) {
-            tableView1.AllowPartialGrouping = !tableView1.AllowPartialGrouping;
+            MyGridControl1.tableView1.AllowPartialGrouping = !MyGridControl1.tableView1.AllowPartialGrouping;
         }
     }
 

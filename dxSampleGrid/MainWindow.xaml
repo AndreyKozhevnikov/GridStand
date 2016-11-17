@@ -32,27 +32,7 @@
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <dxg:GridControl x:Name="gridControl1"
-                                 AutoGenerateColumns="None"
-                                 ItemsSource="{Binding ListPerson}"
-                                 ShowBorder="False"
-                                 >
-                    <dxg:GridControl.Columns>
-                        <dxg:GridColumn FieldName="FirstName" />
-                        <dxg:GridColumn FieldName="LastName" />
-                        <dxg:GridColumn FieldName="Age" />
-                    </dxg:GridControl.Columns>
-                    <dxg:GridControl.View>
-                        <dxg:TableView x:Name="tableView1" ShowTotalSummary="True" AllowConditionalFormattingManager="True" AllowConditionalFormattingMenu="True"  />
-                    </dxg:GridControl.View>
-                    <dxg:GridControl.GroupSummary>
-                        <dxg:GridSummaryItem FieldName="FirstName" SummaryType="Count"/>
-                    </dxg:GridControl.GroupSummary>
-
-                    <dxg:GridControl.TotalSummary>
-                        <dxg:GridSummaryItem FieldName="Age" SummaryType="Sum"/>
-                    </dxg:GridControl.TotalSummary>
-                </dxg:GridControl>
+                <local:MyGridControl x:Name="MyGridControl1"/>
             </Grid>
             <Grid Grid.Row="3">
                 <StackPanel>
