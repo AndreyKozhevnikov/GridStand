@@ -13,19 +13,31 @@ using System.Windows.Input;
 namespace dxSampleGrid {
     public partial class MyViewModel {
         public MyViewModel() {
-            CreateList();
+            CreateList(10);
             CreateAdditionalResouces();
         }
 
-        public ObservableCollection<Person> ListPerson { get; set; }
+        ObservableCollection<Person> _listPerson;
 
-        void CreateList() {
-            ListPerson = new ObservableCollection<Person>();
-
-            for (int i = 0; i < 10; i++) {
-                Person p = new Person(i);
-                ListPerson.Add(p);
+        public ObservableCollection<Person> ListPerson {
+            get {
+                return _listPerson;
             }
+
+            set {
+                _listPerson = value;
+                RaisePropertyChanged("ListPerson");
+            }
+        }
+
+        public      void CreateList(int k) {
+            var lst = new ObservableCollection<Person>();
+
+            for (int i = 0; i < k; i++) {
+                Person p = new Person(i);
+                lst.Add(p);
+            }
+            ListPerson = lst;
         }
     }
 

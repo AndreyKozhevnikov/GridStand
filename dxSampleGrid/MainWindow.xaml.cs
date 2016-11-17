@@ -117,6 +117,20 @@ namespace dxSampleGrid {
             var tv = MyGridControl1.tableView1;
             tv.NewItemRowPosition = NewItemRowPosition.None;
         }
+
+        private void server_Checked(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            vm.CreateList(100000);
+            vm.CreateAdditionalResouces();
+            gc.SetBinding(GridControl.ItemsSourceProperty, new Binding("Data") { ElementName = "dataSource" });
+        }
+
+        private void Plain_Checked(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            vm.CreateList(10);
+            vm.CreateAdditionalResouces();
+            gc.SetBinding(GridControl.ItemsSourceProperty, new Binding("ListPerson"));
+        }
     }
 
 
