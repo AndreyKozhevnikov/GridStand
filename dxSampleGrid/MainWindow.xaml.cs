@@ -131,6 +131,16 @@ namespace dxSampleGrid {
             vm.CreateAdditionalResouces();
             gc.SetBinding(GridControl.ItemsSourceProperty, new Binding("ListPerson"));
         }
+
+        private void save_Click(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            gc.SaveLayoutToXml("text.xml");
+        }
+
+        private void Restore_Click(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            gc.RestoreLayoutFromXml("text.xml");
+        }
     }
 
 

@@ -66,6 +66,11 @@
                 <RadioButton Content="Server" x:Name="server" Checked="server_Checked"/>
                 <RadioButton Content="Plain" x:Name="Plain" Checked="Plain_Checked"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Save" x:Name="save" Click="save_Click"/>
+                <Button Content="Restore" x:Name="Restore" Click="Restore_Click"/>
+            </StackPanel>
+                        
         </StackPanel>
     </Grid>
 
