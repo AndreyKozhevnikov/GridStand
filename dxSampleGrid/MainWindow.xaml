@@ -146,6 +146,7 @@
                 <RadioButton x:Name="InlineHideRow" Content="InlineHideRow" Click="InlineHideRow_Click"  GroupName="g3"/>
                 <RadioButton x:Name="NoneEditForm" Content="None" Click="NoneEditForm_Click"  GroupName="g3"/>
             </StackPanel>
+            <Button Content="AutoWidth" x:Name="AutoWidth" Click="AutoWidth_Click"/>
         </StackPanel>
     </Grid>
 

@@ -176,6 +176,11 @@ namespace dxSampleGrid {
             var tv = MyGridControl1.tableView1;
             tv.EditFormShowMode = EditFormShowMode.None;
         }
+
+        private void AutoWidth_Click(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.AutoWidth = !tv.AutoWidth;
+        }
     }
 
 
