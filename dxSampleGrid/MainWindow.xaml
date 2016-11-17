@@ -13,6 +13,7 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
         xmlns:dxthm="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys"
+        xmlns:dxci="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
         Height="700"
         Width="1720"
         SnapsToDevicePixels="True"
@@ -20,7 +21,13 @@
         UseLayoutRounding="True"
         >
 
-
+    <Window.Resources>
+        <DataTemplate x:Key="DefaultColumnTemplate">
+            <ContentControl>
+                <dxg:GridColumn FieldName="{Binding Path=(dxci:DependencyObjectExtensions.DataContext).FieldName, RelativeSource={RelativeSource Self}}" />
+            </ContentControl>
+        </DataTemplate>
+    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,14 +35,12 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid>
-       
             <Grid.RowDefinitions>
                 <RowDefinition Height="9*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-        
-            <Grid Grid.Row="0" x:Name="rootGrid">
-                <local:MyGridControl x:Name="MyGridControl1"/>
+            <Grid x:Name="rootGrid" Grid.Row="0">
+                <local:MyGridControl x:Name="MyGridControl1" />
             </Grid>
             <Grid Grid.Row="3">
                 <StackPanel>
@@ -44,40 +49,87 @@
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1">
-            <Button Content="Recreate" x:Name="Recreate" Click="Recreate_Click"/>
-            <Button Content="SearchPanelAllowFilter" x:Name="SearchPanelAllowFilter" Click="SearchPanelAllowFilter_Click"/>
-            <Button Content="AllowPartialGrouping" x:Name="AllowPartialGrouping" Click="AllowPartialGrouping_Click"/>
-            <Button Content="MasterDetail"  x:Name="MasterDetail" Click="MasterDetail_Click"/>
-            <Button Content="Bands" x:Name="Bands" Click="Bands_Click"/>
-            <Button Content="Export" x:Name="Export" Click="Export_Click"/>
-            <Button Content="ShowPreview" x:Name="ShowPreview" Click="ShowPreview_Click"/>
+            <Button x:Name="Recreate"
+                    Click="Recreate_Click"
+                    Content="Recreate" />
+            <Button x:Name="SearchPanelAllowFilter"
+                    Click="SearchPanelAllowFilter_Click"
+                    Content="SearchPanelAllowFilter" />
+            <Button x:Name="AllowPartialGrouping"
+                    Click="AllowPartialGrouping_Click"
+                    Content="AllowPartialGrouping" />
+            <Button x:Name="MasterDetail"
+                    Click="MasterDetail_Click"
+                    Content="MasterDetail" />
+            <Button x:Name="Bands"
+                    Click="Bands_Click"
+                    Content="Bands" />
+            <Button x:Name="Export"
+                    Click="Export_Click"
+                    Content="Export" />
+            <Button x:Name="ShowPreview"
+                    Click="ShowPreview_Click"
+                    Content="ShowPreview" />
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="Cell" x:Name="Cell" Checked="Cell_Checked" GroupName="g1"/>
-                <RadioButton Content="Row" x:Name="Row" Checked="Row_Checked" GroupName="g1"/>
-                <RadioButton Content="MRow" x:Name="MultipleRow" Checked="MultipleRow_Checked" GroupName="g1"/>
-                <RadioButton Content="None" x:Name="None" Checked="None_Checked" GroupName="g1"/>
+                <RadioButton x:Name="Cell"
+                             Checked="Cell_Checked"
+                             Content="Cell"
+                             GroupName="g1" />
+                <RadioButton x:Name="Row"
+                             Checked="Row_Checked"
+                             Content="Row"
+                             GroupName="g1" />
+                <RadioButton x:Name="MultipleRow"
+                             Checked="MultipleRow_Checked"
+                             Content="MRow"
+                             GroupName="g1" />
+                <RadioButton x:Name="None"
+                             Checked="None_Checked"
+                             Content="None"
+                             GroupName="g1" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="newitemrow: "/>
-                <RadioButton Content="Top" x:Name="Top" Checked="Top_Checked" GroupName="g2"/>
-                <RadioButton Content="Bottom" x:Name="Bottom" Checked="Bottom_Checked" GroupName="g2"/>
-                <RadioButton Content="None" x:Name="NoneNewItemRow" Checked="NoneNewItemRow_Checked"  GroupName="g2"/>
+                <Label Content="newitemrow: " />
+                <RadioButton x:Name="Top"
+                             Checked="Top_Checked"
+                             Content="Top"
+                             GroupName="g2" />
+                <RadioButton x:Name="Bottom"
+                             Checked="Bottom_Checked"
+                             Content="Bottom"
+                             GroupName="g2" />
+                <RadioButton x:Name="NoneNewItemRow"
+                             Checked="NoneNewItemRow_Checked"
+                             Content="None"
+                             GroupName="g2" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="Server" x:Name="server" Checked="server_Checked"/>
-                <RadioButton Content="Plain" x:Name="Plain" Checked="Plain_Checked"/>
+                <RadioButton x:Name="server"
+                             Checked="server_Checked"
+                             Content="Server" />
+                <RadioButton x:Name="Plain"
+                             Checked="Plain_Checked"
+                             Content="Plain" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Save" x:Name="save" Click="save_Click"/>
-                <Button Content="Restore" x:Name="Restore" Click="Restore_Click"/>
+                <Button x:Name="save"
+                        Click="save_Click"
+                        Content="Save" />
+                <Button x:Name="Restore"
+                        Click="Restore_Click"
+                        Content="Restore" />
             </StackPanel>
-            <dxe:ComboBoxEdit HorizontalAlignment="Left" Width="200" Margin="0,1" 
+            <dxe:ComboBoxEdit Width="200"
+                              Margin="0,1"
+                              HorizontalAlignment="Left"
+                              EditValue="{Binding ApplicationThemeName, Source={x:Static dxthm:GlobalThemeHelper.Instance},UpdateSourceTrigger=PropertyChanged}"
                               IsTextEditable="False"
-       EditValue="{Binding ApplicationThemeName, Source={x:Static dxthm:GlobalThemeHelper.Instance},UpdateSourceTrigger=PropertyChanged}"
-                              ValueMember="Name"
                               ItemsSource="{Binding Source={x:Static dx:Theme.Themes}, Mode=OneWay}"
-                              NullText="NONE" />
-
+                              NullText="NONE"
+                              ValueMember="Name" />
+            <Button x:Name="ColumnsSource"
+                    Click="ColumnsSource_Click"
+                    Content="ColumnsSource" />
         </StackPanel>
     </Grid>
 

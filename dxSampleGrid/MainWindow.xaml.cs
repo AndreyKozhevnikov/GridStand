@@ -141,6 +141,13 @@ namespace dxSampleGrid {
             var gc = MyGridControl1.gridControl1;
             gc.RestoreLayoutFromXml("text.xml");
         }
+
+        private void ColumnsSource_Click(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            gc.Columns.Clear();
+            gc.SetBinding(GridControl.ColumnsSourceProperty, new Binding("MyColumns"));
+            gc.ColumnGeneratorTemplate = this.Resources["DefaultColumnTemplate"] as DataTemplate;
+        }
     }
 
 

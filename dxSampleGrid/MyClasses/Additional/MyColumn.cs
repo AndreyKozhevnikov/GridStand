@@ -11,10 +11,6 @@ namespace dxSampleGrid {
             FieldName = _fieldName;
         }
         public string FieldName { get; set; }
-        public ObservableCollection<MyColumn> MyColumns { get; set; }
-        public void GenerateColumns() {
-            MyColumns = new ObservableCollection<MyColumn>();
-            MyColumns.Add(new MyColumn( "FirstName" ));
-        }
+   
     }
 }

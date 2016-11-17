@@ -15,6 +15,7 @@ namespace dxSampleGrid {
         public MyViewModel() {
             CreateList(10);
             CreateAdditionalResouces();
+            GenerateColumns();
         }
 
         ObservableCollection<Person> _listPerson;
@@ -37,7 +38,13 @@ namespace dxSampleGrid {
                 Person p = new Person(i);
                 lst.Add(p);
             }
-            ListPerson = lst;
+            ListPerson=lst;
+        }
+
+        public ObservableCollection<MyColumn> MyColumns { get; set; }
+        public void GenerateColumns() {
+            MyColumns = new ObservableCollection<MyColumn>();
+            MyColumns.Add(new MyColumn("FirstName"));
         }
     }
 
