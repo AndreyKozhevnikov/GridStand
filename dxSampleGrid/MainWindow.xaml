@@ -12,6 +12,7 @@
         xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxthm="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys"
         Height="700"
         Width="1720"
         SnapsToDevicePixels="True"
@@ -19,7 +20,7 @@
         UseLayoutRounding="True"
         >
 
-    <Window.Resources />
+
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -70,7 +71,13 @@
                 <Button Content="Save" x:Name="save" Click="save_Click"/>
                 <Button Content="Restore" x:Name="Restore" Click="Restore_Click"/>
             </StackPanel>
-                        
+            <dxe:ComboBoxEdit HorizontalAlignment="Left" Width="200" Margin="0,1" 
+                              IsTextEditable="False"
+       EditValue="{Binding ApplicationThemeName, Source={x:Static dxthm:GlobalThemeHelper.Instance},UpdateSourceTrigger=PropertyChanged}"
+                              ValueMember="Name"
+                              ItemsSource="{Binding Source={x:Static dx:Theme.Themes}, Mode=OneWay}"
+                              NullText="NONE" />
+
         </StackPanel>
     </Grid>
 
