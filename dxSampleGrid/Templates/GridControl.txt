@@ -1,0 +1,60 @@
+﻿<dx:PLinqInstantFeedbackDataSource x:Name="dataSource"  ItemsSource="{Binding ListPerson}" />               
+
+
+<dxg:GridControl.GroupSummary>
+                    <dxg:GridSummaryItem FieldName="FirstName" SummaryType="Count"/>
+                </dxg:GridControl.GroupSummary>
+                
+				<dxg:GridControl.TotalSummary>
+                    <dxg:GridSummaryItem FieldName="Age" SummaryType="Sum"/>
+                </dxg:GridControl.TotalSummary>
+                
+			<dxg:GridControl.DetailDescriptor >
+                <dxg:DataControlDetailDescriptor ItemsSourceBinding="{Binding SomeClasses}"   >
+                    <dxg:GridControl >
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="Name" Header="Name"/>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView  />
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </dxg:DataControlDetailDescriptor>
+            </dxg:GridControl.DetailDescriptor>
+
+			   <dxg:GridControl.Bands>
+                        <dxg:GridControlBand Header="Band1">
+
+                        </dxg:GridControlBand>
+                        <dxg:GridControlBand Header="Band2">
+
+                        </dxg:GridControlBand>
+                    </dxg:GridControl.Bands>
+
+<HierarchicalDataTemplate DataType="{x:Type local:Person}" ItemsSource="{Binding SomeClasses}">
+            <Border BorderBrush="Red" BorderThickness="0,5,0,0">
+                <ContentPresenter Content="{Binding}" ContentTemplate="{Binding View.DefaultDataRowTemplate}" />
+            </Border>
+        </HierarchicalDataTemplate>
+		
+		
+		   <DataTemplate x:Key="DefaultColumnTemplate">
+            <ContentControl>
+                <dxg:GridColumn FieldName="{Binding Path=(dxci:DependencyObjectExtensions.DataContext).FieldName, RelativeSource={RelativeSource Self}}" 
+               />
+            </ContentControl>
+        </DataTemplate>
+		
+        <dxg:TableView.RowCellMenuCustomizations>
+                            <dxb:BarButtonItem Content="test"/>
+                        </dxg:TableView.RowCellMenuCustomizations>
+
+
+		  public DataTable ListPersonTable{get;set;}
+		  ListPersonTable = new DataTable();
+            ListPersonTable.Columns.Add(new DataColumn("FirstName"));
+            ListPersonTable.Columns.Add(new DataColumn("Age"));
+			 DataRow r = ListPersonTable.NewRow();
+                r[0] = p.FirstName;
+                r[1] = p.Age;
+                ListPersonTable.Rows.Add(r);
