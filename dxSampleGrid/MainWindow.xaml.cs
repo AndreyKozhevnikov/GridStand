@@ -20,6 +20,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 using DevExpress.Xpf.Core.ServerMode;
 using System.Data;
+using DevExpress.Mvvm.UI.Interactivity;
 
 namespace dxSampleGrid {
     public partial class MainWindow : Window {
@@ -183,7 +184,11 @@ namespace dxSampleGrid {
         }
 
         private void CardView_Click(object sender, RoutedEventArgs e) {
-            MyGridControl1.gridControl1.View = new CardView();
+            var gc = MyGridControl1.gridControl1;
+          gc.View = new CardView();
+            var b = Interaction.GetBehaviors(gc);
+            b.Clear();
+
         }
     }
 
