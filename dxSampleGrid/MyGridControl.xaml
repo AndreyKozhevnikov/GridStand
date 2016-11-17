@@ -13,7 +13,7 @@
     <Grid>
         <dxg:GridControl x:Name="gridControl1"
                          AutoGenerateColumns="None"
-                         ItemsSource="{Binding ListPerson}"
+                         ItemsSource="{Binding ListPerson}" 
                          ShowBorder="False"
                          >
             <dxg:GridControl.Columns>

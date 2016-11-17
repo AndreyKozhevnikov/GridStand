@@ -13,7 +13,7 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
         Height="700"
-        Width="1100"
+        Width="1500"
         SnapsToDevicePixels="True"
         Title="DXApplication"
         UseLayoutRounding="True"
@@ -46,6 +46,15 @@
             <Button Content="AllowPartialGrouping" x:Name="AllowPartialGrouping" Click="AllowPartialGrouping_Click"/>
             <Button Content="MasterDetail"  x:Name="MasterDetail" Click="MasterDetail_Click"/>
             <Button Content="Bands" x:Name="Bands" Click="Bands_Click"/>
+            <Button Content="Export" x:Name="Export" Click="Export_Click"/>
+            <Button Content="ShowPreview" x:Name="ShowPreview" Click="ShowPreview_Click"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Cell" x:Name="Cell" Checked="Cell_Checked" GroupName="g1"/>
+                <RadioButton Content="Row" x:Name="Row" Checked="Row_Checked" GroupName="g1"/>
+                <RadioButton Content="MRow" x:Name="MultipleRow" Checked="MultipleRow_Checked" GroupName="g1"/>
+                <RadioButton Content="None" x:Name="None" Checked="None_Checked" GroupName="g1"/>
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 

@@ -77,6 +77,31 @@ namespace dxSampleGrid {
             gc.Bands.Add(b1);
             gc.Bands.Add(b2);
         }
+
+        private void Export_Click(object sender, RoutedEventArgs e) {
+            MyGridControl1.tableView1.ExportToXlsx("test.xlsx");
+            Process.Start("test.xlsx");
+        }
+
+        private void ShowPreview_Click(object sender, RoutedEventArgs e) {
+            MyGridControl1.tableView1.ShowPrintPreview(this);
+        }
+
+        private void Cell_Checked(object sender, RoutedEventArgs e) {
+            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.Cell;
+        }
+
+        private void Row_Checked(object sender, RoutedEventArgs e) {
+            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.Row;
+        }
+
+        private void MultipleRow_Checked(object sender, RoutedEventArgs e) {
+            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.MultipleRow;
+        }
+
+        private void None_Checked(object sender, RoutedEventArgs e) {
+            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.None;
+        }
     }
 
 
