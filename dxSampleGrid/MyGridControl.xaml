@@ -33,6 +33,7 @@
                                ScrollBarAnnotationMode="All"
                                AllowCellMerge="True"
                                ShowDataNavigator="True"
+                             
                                />
             </dxg:GridControl.View>
             <dxg:GridControl.GroupSummary>

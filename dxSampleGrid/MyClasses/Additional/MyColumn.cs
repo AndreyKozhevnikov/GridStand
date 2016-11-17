@@ -13,4 +13,9 @@ namespace dxSampleGrid {
         public string FieldName { get; set; }
    
     }
+
+    public class MyBand {
+        public string BandName { get; set; }
+        public List<MyColumn> BandColumns { get; set; }
+    }
 }

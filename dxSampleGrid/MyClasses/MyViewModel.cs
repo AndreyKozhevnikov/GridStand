@@ -16,6 +16,7 @@ namespace dxSampleGrid {
             CreateList(10);
             CreateAdditionalResouces();
             GenerateColumns();
+            GenerateBands();
         }
 
         ObservableCollection<Person> _listPerson;
@@ -40,11 +41,31 @@ namespace dxSampleGrid {
             }
             ListPerson=lst;
         }
+        public ObservableCollection<MyBand> MyBands { get; set; }
+        public void GenerateBands() {
+            MyBands = new ObservableCollection<MyBand>();
+            MyBand b1 = new MyBand() { BandName = "band1" };
+            b1.BandColumns = new List<MyColumn>();
+            b1.BandColumns.Add(new MyColumn("FirstName"));
+            b1.BandColumns.Add(new MyColumn("LastName"));
+
+            MyBand b2 = new MyBand() { BandName = "band2" };
+            b2.BandColumns = new List<MyColumn>();
+            b2.BandColumns.Add(new MyColumn("Age"));
+            b2.BandColumns.Add(new MyColumn("Group"));
+
+            MyBands.Add(b1);
+            MyBands.Add(b2);
+        }
 
         public ObservableCollection<MyColumn> MyColumns { get; set; }
         public void GenerateColumns() {
             MyColumns = new ObservableCollection<MyColumn>();
+            MyColumns.Add(new MyColumn("Age"));
+            MyColumns.Add(new MyColumn("LastName"));
             MyColumns.Add(new MyColumn("FirstName"));
+            
+         
         }
     }
 

@@ -148,6 +148,34 @@ namespace dxSampleGrid {
             gc.SetBinding(GridControl.ColumnsSourceProperty, new Binding("MyColumns"));
             gc.ColumnGeneratorTemplate = this.Resources["DefaultColumnTemplate"] as DataTemplate;
         }
+
+        private void BandsSource_Click(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            gc.Columns.Clear();
+            gc.SetBinding(GridControl.BandsSourceProperty, new Binding("MyBands"));
+            gc.BandGeneratorTemplate = this.Resources["DefaultBandTemplate"] as DataTemplate;
+            gc.ColumnGeneratorTemplate = this.Resources["DefaultColumnTemplate"] as DataTemplate;
+        }
+
+        private void Dialog_Click(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.EditFormShowMode = EditFormShowMode.Dialog;
+        }
+
+        private void Inline_Click(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.EditFormShowMode = EditFormShowMode.Inline;
+        }
+
+        private void InlineHideRow_Click(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.EditFormShowMode = EditFormShowMode.InlineHideRow;
+        }
+
+        private void NoneEditForm_Click(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.EditFormShowMode = EditFormShowMode.None;
+        }
     }
 
 

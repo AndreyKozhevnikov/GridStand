@@ -27,11 +27,20 @@
                 <dxg:GridColumn FieldName="{Binding Path=(dxci:DependencyObjectExtensions.DataContext).FieldName, RelativeSource={RelativeSource Self}}" />
             </ContentControl>
         </DataTemplate>
+        <DataTemplate x:Key="DefaultBandTemplate">
+            <ContentControl>
+                <dxg:GridControlBand
+                    ColumnsSource="{Binding BandColumns}"
+                    Header="{Binding BandName}">
+                  
+                </dxg:GridControlBand>
+            </ContentControl>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="5*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid>
@@ -130,6 +139,13 @@
             <Button x:Name="ColumnsSource"
                     Click="ColumnsSource_Click"
                     Content="ColumnsSource" />
+            <Button Content="BandsSource" x:Name="BandsSource" Click="BandsSource_Click"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="Dialog" Content="Dialog" Click="Dialog_Click" GroupName="g3"/>
+                <RadioButton x:Name="Inline" Content="Inline" Click="Inline_Click"  GroupName="g3"/>
+                <RadioButton x:Name="InlineHideRow" Content="InlineHideRow" Click="InlineHideRow_Click"  GroupName="g3"/>
+                <RadioButton x:Name="NoneEditForm" Content="None" Click="NoneEditForm_Click"  GroupName="g3"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 
