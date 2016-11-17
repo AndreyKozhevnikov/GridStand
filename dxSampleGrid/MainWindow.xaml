@@ -31,7 +31,7 @@
                 <RowDefinition Height="9*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" x:Name="rootGrid">
                 <local:MyGridControl x:Name="MyGridControl1"/>
             </Grid>
             <Grid Grid.Row="3">
@@ -41,9 +41,11 @@
             </Grid>
         </Grid>
         <StackPanel Grid.Column="1">
+            <Button Content="Recreate" x:Name="Recreate" Click="Recreate_Click"/>
             <Button Content="SearchPanelAllowFilter" x:Name="SearchPanelAllowFilter" Click="SearchPanelAllowFilter_Click"/>
             <Button Content="AllowPartialGrouping" x:Name="AllowPartialGrouping" Click="AllowPartialGrouping_Click"/>
             <Button Content="MasterDetail"  x:Name="MasterDetail" Click="MasterDetail_Click"/>
+            <Button Content="Bands" x:Name="Bands" Click="Bands_Click"/>
         </StackPanel>
     </Grid>
 

@@ -25,7 +25,9 @@
                 <dxg:TableView x:Name="tableView1"
                                AllowConditionalFormattingManager="True"
                                AllowConditionalFormattingMenu="True"
-                               ShowTotalSummary="True" />
+                               ShowTotalSummary="True" 
+                               ScrollBarAnnotationMode="All"
+                               />
             </dxg:GridControl.View>
             <dxg:GridControl.GroupSummary>
                 <dxg:GridSummaryItem FieldName="FirstName" SummaryType="Count" />

@@ -57,6 +57,26 @@ namespace dxSampleGrid {
                 gc.DetailDescriptor = null;
             }
         }
+
+        private void Recreate_Click(object sender, RoutedEventArgs e) {
+            rootGrid.Children.Clear();
+            rootGrid.Children.Add(new MyGridControl());
+        }
+
+        private void Bands_Click(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            gc.Columns.Clear();
+            var b1 = new GridControlBand();
+            b1.Header = "band1";
+            b1.Columns.Add(new GridColumn() { FieldName = "FirstName" });
+            b1.Columns.Add(new GridColumn() { FieldName = "LastName" });
+            var b2 = new GridControlBand();
+            b2.Header = "band2";
+            b2.Columns.Add(new GridColumn() { FieldName = "Age" });
+            b2.Columns.Add(new GridColumn() { FieldName = "Group" });
+            gc.Bands.Add(b1);
+            gc.Bands.Add(b2);
+        }
     }
 
 
