@@ -102,6 +102,21 @@ namespace dxSampleGrid {
         private void None_Checked(object sender, RoutedEventArgs e) {
             MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.None;
         }
+
+        private void Top_Checked(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.NewItemRowPosition = NewItemRowPosition.Top;
+        }
+
+        private void Bottom_Checked(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.NewItemRowPosition = NewItemRowPosition.Bottom;
+        }
+
+        private void NoneNewItemRow_Checked(object sender, RoutedEventArgs e) {
+            var tv = MyGridControl1.tableView1;
+            tv.NewItemRowPosition = NewItemRowPosition.None;
+        }
     }
 
 

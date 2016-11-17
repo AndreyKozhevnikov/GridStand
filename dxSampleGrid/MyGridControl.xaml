@@ -21,6 +21,7 @@
                 <dxg:GridColumn FieldName="FirstName" />
                 <dxg:GridColumn FieldName="LastName" />
                 <dxg:GridColumn FieldName="Age" />
+                <dxg:GridColumn FieldName="Group" />
             </dxg:GridControl.Columns>
             <dxg:GridControl.View>
                 <dxg:TableView x:Name="tableView1"

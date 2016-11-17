@@ -54,7 +54,12 @@
                 <RadioButton Content="MRow" x:Name="MultipleRow" Checked="MultipleRow_Checked" GroupName="g1"/>
                 <RadioButton Content="None" x:Name="None" Checked="None_Checked" GroupName="g1"/>
             </StackPanel>
-            
+            <StackPanel Orientation="Horizontal">
+                <Label Content="newitemrow: "/>
+                <RadioButton Content="Top" x:Name="Top" Checked="Top_Checked" GroupName="g2"/>
+                <RadioButton Content="Bottom" x:Name="Bottom" Checked="Bottom_Checked" GroupName="g2"/>
+                <RadioButton Content="None" x:Name="NoneNewItemRow" Checked="NoneNewItemRow_Checked"  GroupName="g2"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 
