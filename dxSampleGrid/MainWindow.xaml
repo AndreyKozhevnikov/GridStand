@@ -43,6 +43,7 @@
         <StackPanel Grid.Column="1">
             <Button Content="SearchPanelAllowFilter" x:Name="SearchPanelAllowFilter" Click="SearchPanelAllowFilter_Click"/>
             <Button Content="AllowPartialGrouping" x:Name="AllowPartialGrouping" Click="AllowPartialGrouping_Click"/>
+            <Button Content="MasterDetail"  x:Name="MasterDetail" Click="MasterDetail_Click"/>
         </StackPanel>
     </Grid>
 

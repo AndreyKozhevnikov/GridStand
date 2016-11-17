@@ -41,6 +41,22 @@ namespace dxSampleGrid {
         private void AllowPartialGrouping_Click(object sender, RoutedEventArgs e) {
             MyGridControl1.tableView1.AllowPartialGrouping = !MyGridControl1.tableView1.AllowPartialGrouping;
         }
+
+        private void MasterDetail_Click(object sender, RoutedEventArgs e) {
+            var gc = MyGridControl1.gridControl1;
+            if (gc.DetailDescriptor == null) {
+                DataControlDetailDescriptor dgc = new DataControlDetailDescriptor();
+                dgc.ItemsSourceBinding = new Binding("SomeClasses");
+                GridControl gcchild = new GridControl();
+                gcchild.Columns.Add(new GridColumn() { FieldName = "Name" });
+
+                dgc.DataControl = gcchild;
+                gc.DetailDescriptor = dgc;
+            }
+            else {
+                gc.DetailDescriptor = null;
+            }
+        }
     }
 
 
