@@ -15,7 +15,7 @@
         xmlns:dxthm="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys"
         xmlns:dxci="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
         Height="700"
-        Width="1720"
+        Width="1200"
         SnapsToDevicePixels="True"
         Title="DXApplication"
         UseLayoutRounding="True"
@@ -40,7 +40,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="3*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid>
