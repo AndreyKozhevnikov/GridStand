@@ -36,15 +36,16 @@ namespace dxSampleGrid {
         }
 
         private void SearchPanelAllowFilter_Click(object sender, RoutedEventArgs e) {
-           MyGridControl1.tableView1.SearchPanelAllowFilter = !MyGridControl1.tableView1.SearchPanelAllowFilter;
+           (rootGrid.Children[0] as MyGridControl).tableView1.SearchPanelAllowFilter = !(rootGrid.Children[0] as MyGridControl).tableView1.SearchPanelAllowFilter;
+         
         }
 
         private void AllowPartialGrouping_Click(object sender, RoutedEventArgs e) {
-            MyGridControl1.tableView1.AllowPartialGrouping = !MyGridControl1.tableView1.AllowPartialGrouping;
+            (rootGrid.Children[0] as MyGridControl).tableView1.AllowPartialGrouping = !(rootGrid.Children[0] as MyGridControl).tableView1.AllowPartialGrouping;
         }
 
         private void MasterDetail_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             if (gc.DetailDescriptor == null) {
                 DataControlDetailDescriptor dgc = new DataControlDetailDescriptor();
                 dgc.ItemsSourceBinding = new Binding("SomeClasses");
@@ -62,10 +63,11 @@ namespace dxSampleGrid {
         private void Recreate_Click(object sender, RoutedEventArgs e) {
             rootGrid.Children.Clear();
             rootGrid.Children.Add(new MyGridControl());
+            GC.GetTotalMemory(true);
         }
 
         private void Bands_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.Columns.Clear();
             var b1 = new GridControlBand();
             b1.Header = "band1";
@@ -80,78 +82,78 @@ namespace dxSampleGrid {
         }
 
         private void Export_Click(object sender, RoutedEventArgs e) {
-            MyGridControl1.tableView1.ExportToXlsx("test.xlsx");
+            (rootGrid.Children[0] as MyGridControl).tableView1.ExportToXlsx("test.xlsx");
             Process.Start("test.xlsx");
         }
 
         private void ShowPreview_Click(object sender, RoutedEventArgs e) {
-            MyGridControl1.tableView1.ShowPrintPreview(this);
+            (rootGrid.Children[0] as MyGridControl).tableView1.ShowPrintPreview(this);
         }
 
         private void Cell_Checked(object sender, RoutedEventArgs e) {
-            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.Cell;
+            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.Cell;
         }
 
         private void Row_Checked(object sender, RoutedEventArgs e) {
-            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.Row;
+            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.Row;
         }
 
         private void MultipleRow_Checked(object sender, RoutedEventArgs e) {
-            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.MultipleRow;
+            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.MultipleRow;
         }
 
         private void None_Checked(object sender, RoutedEventArgs e) {
-            MyGridControl1.gridControl1.SelectionMode = MultiSelectMode.None;
+            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.None;
         }
 
         private void Top_Checked(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.NewItemRowPosition = NewItemRowPosition.Top;
         }
 
         private void Bottom_Checked(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.NewItemRowPosition = NewItemRowPosition.Bottom;
         }
 
         private void NoneNewItemRow_Checked(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.NewItemRowPosition = NewItemRowPosition.None;
         }
 
         private void server_Checked(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             vm.CreateList(100000);
             vm.CreateAdditionalResouces();
             gc.SetBinding(GridControl.ItemsSourceProperty, new Binding("Data") { ElementName = "dataSource" });
         }
 
         private void Plain_Checked(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             vm.CreateList(10);
             vm.CreateAdditionalResouces();
             gc.SetBinding(GridControl.ItemsSourceProperty, new Binding("ListPerson"));
         }
 
         private void save_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.SaveLayoutToXml("text.xml");
         }
 
         private void Restore_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.RestoreLayoutFromXml("text.xml");
         }
 
         private void ColumnsSource_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.Columns.Clear();
             gc.SetBinding(GridControl.ColumnsSourceProperty, new Binding("MyColumns"));
             gc.ColumnGeneratorTemplate = this.Resources["DefaultColumnTemplate"] as DataTemplate;
         }
 
         private void BandsSource_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.Columns.Clear();
             gc.SetBinding(GridControl.BandsSourceProperty, new Binding("MyBands"));
             gc.BandGeneratorTemplate = this.Resources["DefaultBandTemplate"] as DataTemplate;
@@ -159,36 +161,49 @@ namespace dxSampleGrid {
         }
 
         private void Dialog_Click(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.EditFormShowMode = EditFormShowMode.Dialog;
         }
 
         private void Inline_Click(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.EditFormShowMode = EditFormShowMode.Inline;
         }
 
         private void InlineHideRow_Click(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.EditFormShowMode = EditFormShowMode.InlineHideRow;
         }
 
         private void NoneEditForm_Click(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.EditFormShowMode = EditFormShowMode.None;
         }
 
         private void AutoWidth_Click(object sender, RoutedEventArgs e) {
-            var tv = MyGridControl1.tableView1;
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.AutoWidth = !tv.AutoWidth;
         }
 
-        private void CardView_Click(object sender, RoutedEventArgs e) {
-            var gc = MyGridControl1.gridControl1;
-          gc.View = new CardView();
+  
+
+        private void CardView_Checked(object sender, RoutedEventArgs e) {
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            gc.View = new CardView();
             var b = Interaction.GetBehaviors(gc);
             b.Clear();
+        }
 
+        private void TreeListView_Checked(object sender, RoutedEventArgs e) {
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            gc.View = new TreeListView();
+            var b = Interaction.GetBehaviors(gc);
+            b.Clear();
+            GC.GetTotalMemory(true);
+        }
+
+        private void TableView_Checked(object sender, RoutedEventArgs e) {
+            Recreate_Click(null, null);
         }
     }
 

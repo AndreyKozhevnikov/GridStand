@@ -32,7 +32,7 @@
                 <dxg:GridControlBand
                     ColumnsSource="{Binding BandColumns}"
                     Header="{Binding BandName}">
-                  
+
                 </dxg:GridControlBand>
             </ContentControl>
         </DataTemplate>
@@ -141,13 +141,17 @@
                     Content="ColumnsSource" />
             <Button Content="BandsSource" x:Name="BandsSource" Click="BandsSource_Click"/>
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="Dialog" Content="Dialog" Click="Dialog_Click" GroupName="g3"/>
-                <RadioButton x:Name="Inline" Content="Inline" Click="Inline_Click"  GroupName="g3"/>
-                <RadioButton x:Name="InlineHideRow" Content="InlineHideRow" Click="InlineHideRow_Click"  GroupName="g3"/>
-                <RadioButton x:Name="NoneEditForm" Content="None" Click="NoneEditForm_Click"  GroupName="g3"/>
+                <RadioButton x:Name="Dialog" Content="Dialog" Checked="Dialog_Click" GroupName="g3"/>
+                <RadioButton x:Name="Inline" Content="Inline" Checked="Inline_Click"  GroupName="g3"/>
+                <RadioButton x:Name="InlineHideRow" Content="InlineHideRow" Checked="InlineHideRow_Click"  GroupName="g3"/>
+                <RadioButton x:Name="NoneEditForm" Content="None" Checked="NoneEditForm_Click"  GroupName="g3"/>
             </StackPanel>
             <Button Content="AutoWidth" x:Name="AutoWidth" Click="AutoWidth_Click"/>
-            <Button Content="CardView" x:Name="CardView" Click="CardView_Click"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="TableView" x:Name="TableView" Checked="TableView_Checked" GroupName="g4" />
+                <RadioButton Content="CardView" x:Name="CardView" Checked="CardView_Checked" GroupName="g4"/>
+                <RadioButton Content="TreeListView" x:Name="TreeListView" Checked="TreeListView_Checked" GroupName="g4"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 
