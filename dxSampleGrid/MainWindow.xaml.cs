@@ -135,6 +135,7 @@ namespace dxSampleGrid {
 
         private void server_Checked(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            removeDD(gc);
             gc.DetailDescriptor = null;
             vm.CreateList(100000);
             vm.CreateAdditionalResouces();
@@ -211,6 +212,10 @@ namespace dxSampleGrid {
         private void CardView_Checked(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.View = new CardView();
+            removeDD(gc);
+        }
+
+        private static void removeDD(GridControl gc) {
             var b = Interaction.GetBehaviors(gc);
             b.Clear();
         }
@@ -231,6 +236,7 @@ namespace dxSampleGrid {
 
         private void DragDrop_Click(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            gc.ItemsSource = vm.ListPerson;
             var b = Interaction.GetBehaviors(gc);
             if (b.Count > 0) {
                 b.Clear();
