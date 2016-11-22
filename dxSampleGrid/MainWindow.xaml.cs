@@ -32,12 +32,12 @@ namespace dxSampleGrid {
         MyViewModel vm;
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-         
+
         }
 
         private void SearchPanelAllowFilter_Click(object sender, RoutedEventArgs e) {
-           (rootGrid.Children[0] as MyGridControl).tableView1.SearchPanelAllowFilter = !(rootGrid.Children[0] as MyGridControl).tableView1.SearchPanelAllowFilter;
-         
+            (rootGrid.Children[0] as MyGridControl).tableView1.SearchPanelAllowFilter = !(rootGrid.Children[0] as MyGridControl).tableView1.SearchPanelAllowFilter;
+
         }
 
         private void AllowPartialGrouping_Click(object sender, RoutedEventArgs e) {
@@ -185,7 +185,7 @@ namespace dxSampleGrid {
             tv.AutoWidth = !tv.AutoWidth;
         }
 
-  
+
 
         private void CardView_Checked(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
@@ -204,6 +204,22 @@ namespace dxSampleGrid {
 
         private void TableView_Checked(object sender, RoutedEventArgs e) {
             Recreate_Click(null, null);
+        }
+
+
+
+        private void DragDrop_Click(object sender, RoutedEventArgs e) {
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            var b = Interaction.GetBehaviors(gc);
+            if (b.Count > 0) {
+                b.Clear();
+            }
+            else {
+                if (gc.View is TableView)
+                    b.Add(new GridDragDropManager());
+                if (gc.View is TreeListView)
+                    b.Add(new TreeListDragDropManager());
+            }
         }
     }
 

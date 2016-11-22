@@ -152,6 +152,7 @@
                 <RadioButton Content="CardView" x:Name="CardView" Checked="CardView_Checked" GroupName="g4"/>
                 <RadioButton Content="TreeListView" x:Name="TreeListView" Checked="TreeListView_Checked" GroupName="g4"/>
             </StackPanel>
+            <Button Content="DragDrop" x:Name="DragDrop" Click="DragDrop_Click"/>
         </StackPanel>
     </Grid>
 

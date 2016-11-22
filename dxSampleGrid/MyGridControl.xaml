@@ -42,9 +42,7 @@
             <dxg:GridControl.TotalSummary>
                 <dxg:GridSummaryItem FieldName="Age" SummaryType="Sum" />
             </dxg:GridControl.TotalSummary>
-            <dxmvvm:Interaction.Behaviors>
-                <dxg:GridDragDropManager />
-            </dxmvvm:Interaction.Behaviors>
+          
         </dxg:GridControl>
     </Grid>
 
