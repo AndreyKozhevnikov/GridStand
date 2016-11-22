@@ -47,6 +47,7 @@ namespace dxSampleGrid {
 
         private void MasterDetail_Click(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            gc.ItemsSource = vm.ListPerson;
             if (gc.DetailDescriptor == null) {
                 DataControlDetailDescriptor dgc = new DataControlDetailDescriptor();
                 dgc.ItemsSourceBinding = new Binding("SomeClasses");
@@ -134,6 +135,7 @@ namespace dxSampleGrid {
 
         private void server_Checked(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            gc.DetailDescriptor = null;
             vm.CreateList(100000);
             vm.CreateAdditionalResouces();
             gc.SetBinding(GridControl.ItemsSourceProperty, new Binding("Data") { ElementName = "dataSource" });
@@ -160,6 +162,9 @@ namespace dxSampleGrid {
         private void ColumnsSource_Click(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.Columns.Clear();
+            gc.ColumnsSource = null;
+            gc.Bands.Clear();
+            gc.BandsSource = null;
             gc.SetBinding(GridControl.ColumnsSourceProperty, new Binding("MyColumns"));
             gc.ColumnGeneratorTemplate = this.Resources["DefaultColumnTemplate"] as DataTemplate;
         }
@@ -167,6 +172,10 @@ namespace dxSampleGrid {
         private void BandsSource_Click(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
             gc.Columns.Clear();
+            gc.Bands.Clear();
+            gc.ColumnsSource = null;
+            gc.BandsSource = null;
+            vm.GenerateBands();
             gc.SetBinding(GridControl.BandsSourceProperty, new Binding("MyBands"));
             gc.BandGeneratorTemplate = this.Resources["DefaultBandTemplate"] as DataTemplate;
             gc.ColumnGeneratorTemplate = this.Resources["DefaultColumnTemplate"] as DataTemplate;
