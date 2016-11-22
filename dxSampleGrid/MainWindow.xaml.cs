@@ -21,6 +21,7 @@ using System.Windows.Threading;
 using DevExpress.Xpf.Core.ServerMode;
 using System.Data;
 using DevExpress.Mvvm.UI.Interactivity;
+using System.IO;
 
 namespace dxSampleGrid {
     public partial class MainWindow : Window {
@@ -53,6 +54,10 @@ namespace dxSampleGrid {
                 gcchild.Columns.Add(new GridColumn() { FieldName = "Name" });
 
                 dgc.DataControl = gcchild;
+
+                if (gc.SelectionMode == MultiSelectMode.Cell)
+                    gc.SelectionMode = MultiSelectMode.None;
+
                 gc.DetailDescriptor = dgc;
             }
             else {
@@ -91,15 +96,21 @@ namespace dxSampleGrid {
         }
 
         private void Cell_Checked(object sender, RoutedEventArgs e) {
-            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.Cell;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+            gc.DetailDescriptor = null;
+           gc.SelectionMode = MultiSelectMode.Cell;
         }
 
         private void Row_Checked(object sender, RoutedEventArgs e) {
-            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.Row;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+         //   gc.DetailDescriptor = null;
+            gc.SelectionMode = MultiSelectMode.Row;
         }
 
         private void MultipleRow_Checked(object sender, RoutedEventArgs e) {
-            (rootGrid.Children[0] as MyGridControl).gridControl1.SelectionMode = MultiSelectMode.MultipleRow;
+            var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+        //    gc.DetailDescriptor = null;
+            gc.SelectionMode = MultiSelectMode.MultipleRow;
         }
 
         private void None_Checked(object sender, RoutedEventArgs e) {
@@ -142,8 +153,8 @@ namespace dxSampleGrid {
 
         private void Restore_Click(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
-
-            gc.RestoreLayoutFromXml("text.xml");
+            if (File.Exists("test.xml"))
+                gc.RestoreLayoutFromXml("text.xml");
         }
 
         private void ColumnsSource_Click(object sender, RoutedEventArgs e) {
@@ -226,7 +237,7 @@ namespace dxSampleGrid {
         private void CellMerging_Click(object sender, RoutedEventArgs e) {
             var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
             tv.AllowCellMerge = !tv.AllowCellMerge;
-            
+
         }
     }
 
