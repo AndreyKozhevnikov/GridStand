@@ -153,6 +153,7 @@
                 <RadioButton Content="TreeListView" x:Name="TreeListView" Checked="TreeListView_Checked" GroupName="g4"/>
             </StackPanel>
             <Button Content="DragDrop" x:Name="DragDrop" Click="DragDrop_Click"/>
+            <Button Content="CellMerging" x:Name="CellMerging" Click="CellMerging_Click"/>
         </StackPanel>
     </Grid>
 

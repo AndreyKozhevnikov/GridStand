@@ -142,6 +142,7 @@ namespace dxSampleGrid {
 
         private void Restore_Click(object sender, RoutedEventArgs e) {
             var gc = (rootGrid.Children[0] as MyGridControl).gridControl1;
+
             gc.RestoreLayoutFromXml("text.xml");
         }
 
@@ -220,6 +221,12 @@ namespace dxSampleGrid {
                 if (gc.View is TreeListView)
                     b.Add(new TreeListDragDropManager());
             }
+        }
+
+        private void CellMerging_Click(object sender, RoutedEventArgs e) {
+            var tv = (rootGrid.Children[0] as MyGridControl).tableView1;
+            tv.AllowCellMerge = !tv.AllowCellMerge;
+            
         }
     }
 
